@@ -686,9 +686,13 @@ class Sampler:
                 '--chain_id_jsonl',
                 path_for_assigned_chains,
             ]
-        if "cuda" in self.device:
-            pmpnn_args.append('--device')
-            pmpnn_args.append(self.device.split(":")[1])
+        # if "cuda" in self.device:
+        #     pmpnn_args.append('--device')
+        #     pmpnn_args.append(self.device.split(":")[1])
+        env = os.environ.copy()
+        env["CUDA_VISIBLE_DEVICES"] = ""
+        pmpnn_args.append('--device')
+        pmpnn_args.append('cpu')
 
         while ret < 0:
             print("running ProteinMPNN", pmpnn_args)
@@ -696,7 +700,8 @@ class Sampler:
                 process = subprocess.Popen(
                     pmpnn_args,
                     stdout=subprocess.DEVNULL,
-                    stderr=subprocess.STDOUT
+                    stderr=subprocess.STDOUT,
+                    env=env
                 )
                 ret = process.wait()
             except Exception as e:

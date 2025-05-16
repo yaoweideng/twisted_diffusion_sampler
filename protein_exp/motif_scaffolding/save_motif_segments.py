@@ -126,7 +126,8 @@ def process_contig(sample_contig, all_chain_feats):
 
 def load_contig_test_case(row):
     motif_chain_feats = process_motif_row(row)
-    motif_length = row.length
+    # motif_length = row.length
+    motif_length = np.nan
     motif_contig = row.contig
     length_fixed = row.length_fixed
 
