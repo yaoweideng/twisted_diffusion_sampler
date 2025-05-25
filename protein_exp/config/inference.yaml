@@ -91,3 +91,7 @@ inference:
 
     # Keep motif sequence outside redesign region
     keep_motif_seq: True
+
+    reweight_t: 25
+    omega_geom: 1
+    omega_seq: 0.1
