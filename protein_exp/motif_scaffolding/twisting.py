@@ -4,6 +4,8 @@ from data import so3_utils
 from analysis import utils as au
 import numpy as np
 import time
+import random
+from math import comb
 
 def perturbations_for_grad(sample_feats, se3_diffuser):
     """perturbations_for_grad turns xt composed with an identity perturbation
@@ -53,6 +55,23 @@ def get_all_motif_locations(L, segment_lengths, max_offsets=1000, first_call=Tru
     Returns:
         all_motif_locations: list of lists of tuples, each tuple is a (start, end) location for a segment
     """
+    # estimate total placements; if it is too large, then we will sample a random subset of placements
+    k = len(segment_lengths)
+    slack = L - sum(segment_lengths)
+    total = comb(slack + k, k)
+    if first_call and total > max_offsets * 100:
+        all_motif_locations = []
+        for _ in range(max_offsets):
+            cuts = sorted(random.sample(range(slack + k), k))
+            gaps = [cuts[0]] + [cuts[i] - cuts[i-1] - 1 for i in range(1, k)] + [(slack + k - 1) - cuts[-1]]
+            motif_locs = []
+            pos = gaps[0]
+            for idx, m in enumerate(segment_lengths):
+                motif_locs.append((pos, pos + m - 1))
+                if idx + 1 < k:
+                    pos += m + gaps[idx+1]
+                all_motif_locations.append(motif_locs)
+        return all_motif_locations
     st_0_min = 0
     st_0_max = L - sum(segment_lengths)
     all_motif_locations = []
