@@ -26,6 +26,7 @@ def reindex_pdb(input_path, output_path):
         shutil.copy2(input_path, output_path)
         return
     # else shift everything by +1
+    print(f"Reindexing {input_path} to {output_path} by shifting all ATOM/HETATM indices by +1")
     shift = 1
     with open(output_path, 'w') as fout:
         for L in lines:
@@ -152,7 +153,7 @@ def extract_scaffolds(parent_dir, output_dir, test_case_id=None):
         os.makedirs(dst_dir, exist_ok=True)
         dst = os.path.join(dst_dir, f"{test_case_id}_{entry.split('_')[1]}.pdb")
         reindex_pdb(src, dst)
-        shutil.copy2(src, dst)
+        # shutil.copy2(src, dst)
 
         # copy per-sample CSV
         src_sc = os.path.join(sample_dir, sc_results[0])
