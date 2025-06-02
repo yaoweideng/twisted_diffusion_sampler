@@ -1,0 +1,129 @@
+data:
+  csv_path: ./data/processed_pdb/metadata.csv
+  filtering:
+    max_len: 512
+    min_len: 60
+    subset: null
+    allowed_oligomer:
+    - monomeric
+    max_helix_percent: 1.0
+    max_loop_percent: 0.5
+    min_beta_percent: -1.0
+  min_t: 0.01
+  samples_per_eval_length: 4
+  num_eval_lengths: 10
+  num_t: 100
+diffuser:
+  diffuse_trans: true
+  diffuse_rot: true
+  r3:
+    min_b: 0.1
+    max_b: 20.0
+    coordinate_scaling: 0.1
+  so3:
+    num_omega: 1000
+    num_sigma: 1000
+    min_sigma: 0.1
+    max_sigma: 1.5
+    schedule: logarithmic
+    cache_dir: .cache/
+    exp_rate: 1.0
+model:
+  node_embed_size: 256
+  edge_embed_size: 128
+  dropout: 0.0
+  embed:
+    index_embed_size: 32
+    aatype_embed_size: 64
+    embed_self_conditioning: false
+    num_bins: 22
+    min_bin: 1.0e-05
+    max_bin: 20.0
+  ipa:
+    c_s: ${model.node_embed_size}
+    c_z: ${model.edge_embed_size}
+    c_hidden: 256
+    c_skip: 64
+    no_heads: 8
+    no_qk_points: 8
+    no_v_points: 12
+    seq_tfmr_num_heads: 4
+    seq_tfmr_num_layers: 2
+    num_blocks: 4
+    coordinate_scaling: ${diffuser.r3.coordinate_scaling}
+experiment:
+  name: baseline
+  run_id: null
+  log_freq: 1000
+  batch_size: 64
+  eval_batch_size: ${data.samples_per_eval_length}
+  num_loader_workers: 10
+  num_epoch: 50
+  learning_rate: 1.0e-05
+  max_squared_res: 1000000
+  prefetch_factor: 100
+  use_gpu: true
+  num_gpus: 2
+  wandb_dir: ./
+  use_wandb: false
+  ckpt_freq: 10000
+  early_ckpt: true
+  warm_start: null
+  use_warm_start_conf: false
+  ckpt_dir: ./ckpt/
+  trans_loss_weight: 1.0
+  rot_loss_weight: 1.0
+  trans_x0_threshold: 1.0
+  coordinate_scaling: ${diffuser.r3.coordinate_scaling}
+  bb_atom_loss_weight: 1.0
+  bb_atom_loss_t_filter: 0.25
+  dist_mat_loss_weight: 1.0
+  dist_mat_loss_t_filter: 0.25
+  aux_loss_weight: 0
+  eval_dir: ./eval_outputs
+  noise_scale: 1.0
+  num_parameters: null
+inference:
+  name: tds_run
+  gpu_id: 0
+  seed: 123
+  pt_hub_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/.cache/torch
+  pmpnn_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/ProteinMPNN
+  output_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test2
+  weights_path: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/weights/paper_weights.pth
+  aux_traj: false
+  folding_method: esmf
+  diffusion:
+    num_t: 200
+    noise_scale: 0.5
+    min_t: 0.01
+  samples:
+    samples_per_length: 5
+    seq_per_sample: 8
+    min_length: 100
+    max_length: 500
+    length_step: 5
+  particle_filtering:
+    number_of_particles: 8
+    resample_threshold: 0.5
+    insert_motif_at_t0: false
+  motif_scaffolding:
+    number_of_samples: 10
+    batch_size: 1
+    max_offsets: 1000
+    num_rots: 100
+    no_self_conditioning: false
+    use_replacement: false
+    use_contig_for_placement: false
+    use_twisting: true
+    twist_scale: 2.0
+    test_name: 22_1BCF
+    twist_potential_rot: true
+    twist_potential_trans: true
+    twist_update_rot: true
+    twist_update_trans: true
+    inpaint_cases_csv: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/motif_scaffolding/mb_test_cases.csv
+    keep_motif_seq: true
+    reweight_t: 25
+    omega_geom: 1
+    omega_seq: 0.1
