@@ -51,14 +51,30 @@ def parse_placements(row):
     starts, ends = zip(*(map(int, s.split('_')) for s in segs))
     length = row.get('length_fixed', row.get('length'))
 
-    # assign chain IDs A, B, C, ...
-    num = len(starts)
-    chain_ids = [chr(65 + i) for i in range(num)]  # ['A', 'B', ...]
+    # Extract chain order from contig string
+    contig = row['contig']
+    # Find all chain IDs in the contig string (they appear after numbers and before numbers)
+    chain_ids = []
+    for part in contig.split(','):
+        # Split on numbers and filter out empty strings
+        parts = [p for p in re.split(r'\d+', part) if p]
+        # Extract chain IDs (they're single letters)
+        for p in parts:
+            if p.strip() and p.strip().isalpha():
+                chain_ids.append(p.strip())
+    
+    # Remove duplicates while preserving order
+    chain_ids = list(dict.fromkeys(chain_ids))
+    
+    if len(chain_ids) != len(starts):
+        print(f"Warning: Number of chains in contig ({len(chain_ids)}) doesn't match number of segments ({len(starts)}) for {row['pdb_id']}")
+        # Fallback to alphabetical ordering if there's a mismatch
+        chain_ids = [chr(65 + i) for i in range(len(starts))]
 
     # compute head, inter-segment gaps, and tail
     head = starts[0]
     gaps = []
-    for i in range(num - 1):
+    for i in range(len(starts) - 1):
         gaps.append(starts[i+1] - ends[i] - 1)
     tail = length - ends[-1] - 1
 
@@ -67,9 +83,9 @@ def parse_placements(row):
     if head > 0:
         tokens.append(str(head))
 
-    for i in range(num):
+    for i in range(len(starts)):
         tokens.append(chain_ids[i])
-        if i < num - 1:
+        if i < len(starts) - 1:
             if gaps[i] > 0:
                 tokens.append(str(gaps[i]))
 
