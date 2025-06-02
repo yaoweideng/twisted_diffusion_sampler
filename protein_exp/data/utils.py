@@ -132,6 +132,7 @@ def parse_pdb_feats(
         pdb_name: str,
         pdb_path: str,
         scale_factor=1.,
+        center_of_mass_offset=None,
         # TODO: Make the default behaviour read all chains.
         chain_id='A',
     ):
@@ -140,7 +141,8 @@ def parse_pdb_feats(
         pdb_name: name of PDB to parse.
         pdb_path: path to PDB file to read.
         scale_factor: factor to scale atom positions.
-        mean_center: whether to mean center atom positions.
+        center_of_mass_offset: offset to apply to the center of mass (3D vector).
+        chain_id: chain ID to process.
     Returns:
         Dict with CHAIN_FEATS features extracted from PDB with specified
         preprocessing.
@@ -158,7 +160,7 @@ def parse_pdb_feats(
         # Process features
         feat_dict = {x: chain_dict[x] for x in CHAIN_FEATS}
         return parse_chain_feats(
-            feat_dict, scale_factor=scale_factor)
+            feat_dict, scale_factor=scale_factor, center_of_mass_offset=center_of_mass_offset)
 
     if isinstance(chain_id, str):
         return _process_chain_id(chain_id)
@@ -417,14 +419,57 @@ def create_data_loader(
         multiprocessing_context='fork' if num_workers != 0 else None,
         )
 
-def parse_chain_feats(chain_feats, scale_factor=1.):
+def calculate_solvent_exposed_com_offset(atom_positions, atom_mask, scale_factor=1.0):
+    """Calculate a reasonable center of mass offset for solvent-exposed motifs.
+    
+    Args:
+        atom_positions: [L, 37, 3] array of atom positions
+        atom_mask: [L, 37] array of atom masks
+        scale_factor: scale factor used in the model
+        
+    Returns:
+        [3] array of COM offset
+    """
+    # Get CA atoms (index 1 in atom_positions)
+    ca_mask = atom_mask[:, 1]  # [L]
+    ca_pos = atom_positions[:, 1]  # [L, 3]
+    
+    # Calculate center of mass
+    com = np.sum(ca_pos * ca_mask[:, None], axis=0) / (np.sum(ca_mask) + 1e-5)
+    
+    # Calculate radius of gyration
+    centered_pos = ca_pos - com[None, :]
+    Rg = np.sqrt(np.sum(centered_pos**2 * ca_mask[:, None]) / (np.sum(ca_mask) + 1e-5))
+    
+    # Generate random direction
+    random_dir = np.random.randn(3)
+    random_dir = random_dir / np.linalg.norm(random_dir)
+    
+    # Move COM outward by 0.5 * Rg
+    offset = random_dir * (0.5 * Rg)
+    
+    # Scale by the model's scale factor
+    return offset / scale_factor
+
+def parse_chain_feats(chain_feats, scale_factor=1., center_of_mass_offset=None):
     ca_idx = residue_constants.atom_order['CA']
     chain_feats['bb_mask'] = chain_feats['atom_mask'][:, ca_idx]
-    # bb_pos = chain_feats['atom_positions'][:, ca_idx]
-    # bb_center = np.sum(bb_pos, axis=0) / (np.sum(chain_feats['bb_mask']) + 1e-5)
-    # centered_pos = chain_feats['atom_positions'] - bb_center[None, None, :]
-    # scaled_pos = centered_pos / scale_factor
-    scaled_pos = chain_feats['atom_positions'] / scale_factor
+    bb_pos = chain_feats['atom_positions'][:, ca_idx]
+    bb_center = np.sum(bb_pos, axis=0) / (np.sum(chain_feats['bb_mask']) + 1e-5)
+    
+    # If no offset provided, calculate a solvent-exposed offset
+    if center_of_mass_offset is None:
+        center_of_mass_offset = calculate_solvent_exposed_com_offset(
+            chain_feats['atom_positions'], 
+            chain_feats['atom_mask'],
+            scale_factor
+        )
+    
+    # Apply center of mass offset
+    bb_center = bb_center + center_of_mass_offset
+    
+    centered_pos = chain_feats['atom_positions'] - bb_center[None, None, :]
+    scaled_pos = centered_pos / scale_factor
     chain_feats['atom_positions'] = scaled_pos * chain_feats['atom_mask'][..., None]
     chain_feats['bb_positions'] = chain_feats['atom_positions'][:, ca_idx]
     return chain_feats
