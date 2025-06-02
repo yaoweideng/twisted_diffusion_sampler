@@ -419,54 +419,15 @@ def create_data_loader(
         multiprocessing_context='fork' if num_workers != 0 else None,
         )
 
-def calculate_solvent_exposed_com_offset(atom_positions, atom_mask, scale_factor=1.0):
-    """Calculate a reasonable center of mass offset for solvent-exposed motifs.
-    
-    Args:
-        atom_positions: [L, 37, 3] array of atom positions
-        atom_mask: [L, 37] array of atom masks
-        scale_factor: scale factor used in the model
-        
-    Returns:
-        [3] array of COM offset
-    """
-    # Get CA atoms (index 1 in atom_positions)
-    ca_mask = atom_mask[:, 1]  # [L]
-    ca_pos = atom_positions[:, 1]  # [L, 3]
-    
-    # Calculate center of mass
-    com = np.sum(ca_pos * ca_mask[:, None], axis=0) / (np.sum(ca_mask) + 1e-5)
-    
-    # Calculate radius of gyration
-    centered_pos = ca_pos - com[None, :]
-    Rg = np.sqrt(np.sum(centered_pos**2 * ca_mask[:, None]) / (np.sum(ca_mask) + 1e-5))
-    
-    # Generate random direction
-    random_dir = np.random.randn(3)
-    random_dir = random_dir / np.linalg.norm(random_dir)
-    
-    # Move COM outward by 0.5 * Rg
-    offset = random_dir * (0.5 * Rg)
-    
-    # Scale by the model's scale factor
-    return offset / scale_factor
-
 def parse_chain_feats(chain_feats, scale_factor=1., center_of_mass_offset=None):
     ca_idx = residue_constants.atom_order['CA']
     chain_feats['bb_mask'] = chain_feats['atom_mask'][:, ca_idx]
     bb_pos = chain_feats['atom_positions'][:, ca_idx]
     bb_center = np.sum(bb_pos, axis=0) / (np.sum(chain_feats['bb_mask']) + 1e-5)
     
-    # If no offset provided, calculate a solvent-exposed offset
-    if center_of_mass_offset is None:
-        center_of_mass_offset = calculate_solvent_exposed_com_offset(
-            chain_feats['atom_positions'], 
-            chain_feats['atom_mask'],
-            scale_factor
-        )
-    
-    # Apply center of mass offset
-    bb_center = bb_center + center_of_mass_offset
+    # Apply center of mass offset if provided
+    if center_of_mass_offset is not None:
+        bb_center = bb_center + center_of_mass_offset
     
     centered_pos = chain_feats['atom_positions'] - bb_center[None, None, :]
     scaled_pos = centered_pos / scale_factor

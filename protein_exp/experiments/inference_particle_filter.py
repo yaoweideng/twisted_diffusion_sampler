@@ -107,8 +107,22 @@ def save_aux_traj(sampler, sample_dir, aatype=None, diffuse_mask=None):
 def init_particle_filter(sampler, motif_contig_info, P=4):
     sampler.PF_cache = {}
     motif_segments = [torch.tensor(motif_segment, dtype=torch.float64) for motif_segment in motif_contig_info['motif_segments']]
-    rigids_motif = eu.remove_com_from_tensor_7(
-        torch.cat([motif_segment.to(sampler.device) for motif_segment in motif_segments], dim=0))
+    
+    # Calculate solvent-exposed offset for the motif
+    motif_coords = torch.cat([motif_segment.to(sampler.device) for motif_segment in motif_segments], dim=0)
+    ca_pos = motif_coords[:, 1, :]  # Get CA atoms
+    com = torch.mean(ca_pos, dim=0)
+    centered_pos = ca_pos - com[None, :]
+    Rg = torch.sqrt(torch.mean(torch.sum(centered_pos**2, dim=-1)))
+    
+    # Generate random direction and apply offset
+    random_dir = torch.randn(3, device=sampler.device)
+    random_dir = random_dir / torch.norm(random_dir)
+    offset = random_dir * (0.5 * Rg)
+    
+    # Apply offset to motif coordinates
+    motif_coords = motif_coords + offset[None, None, :]
+    rigids_motif = eu.remove_com_from_tensor_7(motif_coords)
     sampler.PF_cache["rigids_motif"] = rigids_motif
 
     if sampler._infer_conf.motif_scaffolding.use_contig_for_placement:
@@ -134,7 +148,6 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     sampler.PF_cache["F"] = F
     sampler.PF_cache["all_motif_locations"] = all_motif_locations
     sampler.PF_cache["all_rots"] = all_rots
-
 
     # Initialize sample_feats
     res_mask = np.ones([P, length])
