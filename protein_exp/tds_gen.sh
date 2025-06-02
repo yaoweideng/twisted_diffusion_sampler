@@ -3,7 +3,7 @@
 #SBATCH --output=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.out
 #SBATCH --error=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.err
 #SBATCH --time=08:00:00
-#SBATCH --partition=gpu,btrippe,owners,roxanad,stat
+#SBATCH --partition=stat,gpu,btrippe,owners,roxanad
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=GPU_MEM:80GB
 #SBATCH --array=1-30
@@ -34,11 +34,11 @@ BASE_DIR=/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp
 ####### Hyperparameters #######
 WEIGHTS_PATH=${BASE_DIR}/weights/paper_weights.pth
 NUM_SAMPLES=100
-K=8
+K=4
 NUM_STEPS_GEOM=200
 STRUCT_TWIST_SCALE=2
 TEST_CASES_CSV=${BASE_DIR}/motif_scaffolding/mb_test_cases.csv
-OUT_DIR=/scratch/users/yaowei/tds/experiments_new/outputs/run_vanilla_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
+OUT_DIR=/scratch/users/yaowei/tds/exp_v3/outputs/run_vanilla_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
 
 python experiments/inference_particle_filter.py \
     inference.weights_path=$WEIGHTS_PATH \

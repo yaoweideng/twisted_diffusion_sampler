@@ -42,35 +42,42 @@ def reindex_pdb(input_path, output_path):
 
 
 def parse_placements(row):
+    """
+    Build a contig string of head/gaps/tail with chain IDs for multiple motif segments.
+    Example: sample_placements="11_25,35_49", length_fixed=125 → "11/A/9/B/75".
+    """
+    # split into start-end pairs
     segs = row['sample_placements'].split(',')
-    contig_parts = row['contig'].split(',')
-    length = row['length_fixed']
-    chain_ids = [
-        re.match(r'([A-Za-z]+)', p).group(1)
-        for p in contig_parts
-        if re.search(r'[A-Za-z]', p)
-    ]
-    if len(segs) != len(chain_ids):
-        raise ValueError(f"got {len(segs)} segments but {len(chain_ids)} chains in row {row.name}")
     starts, ends = zip(*(map(int, s.split('_')) for s in segs))
-    start = starts[0]
-    head  = start
+    length = row.get('length_fixed', row.get('length'))
+
+    # assign chain IDs A, B, C, ...
+    num = len(starts)
+    chain_ids = [chr(65 + i) for i in range(num)]  # ['A', 'B', ...]
+
+    # compute head, inter-segment gaps, and tail
+    head = starts[0]
+    gaps = []
+    for i in range(num - 1):
+        gaps.append(starts[i+1] - ends[i] - 1)
     tail = length - ends[-1] - 1
 
+    # build tokens
     tokens = []
-    if start > 0:
-        tokens.append(str(start if start == 1 else head))
+    if head > 0:
+        tokens.append(str(head))
 
-    for i in range(len(chain_ids) - 1):
-        motif_len = ends[i] - starts[i] + 1
-        tokens += [chain_ids[i], str(motif_len)]
+    for i in range(num):
+        tokens.append(chain_ids[i])
+        if i < num - 1:
+            if gaps[i] > 0:
+                tokens.append(str(gaps[i]))
 
     if tail > 0:
-        tokens += [chain_ids[-1], str(tail)]
-    else:
-        tokens.append(chain_ids[-1])
+        tokens.append(str(tail))
 
     return '/'.join(tokens)
+
 
 def extract_motif_segments(parent_dir):
     parent_dir = Path(parent_dir)

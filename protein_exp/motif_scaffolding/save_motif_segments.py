@@ -44,6 +44,7 @@ def create_pad_feats(pad_amt):
     return pad_feats
 
 def process_motif_row(motif_row):
+
     """Parse row in the motif CSV."""
     motif_path = motif_row.motif_path
     motif_chain_feats = du.parse_pdb_feats(

@@ -285,7 +285,7 @@ def run(conf: DictConfig) -> None:
 
     # Load motif test case details
     inpaint_df = pd.read_csv(sampler._infer_conf.motif_scaffolding.inpaint_cases_csv)
-    contigs_by_test_case = save_motif_segments.load_contigs_by_test_case(inpaint_df)
+    # contigs_by_test_case = save_motif_segments.load_contigs_by_test_case(inpaint_df)
     if sampler._infer_conf.motif_scaffolding.test_name is not None:
         test_names = [sampler._infer_conf.motif_scaffolding.test_name]
         print("running on test case: ", test_names)
@@ -296,7 +296,7 @@ def run(conf: DictConfig) -> None:
 
     for test_name in test_names:
         print("starting test case: ", test_name)
-        motif_contig_info = contigs_by_test_case[test_name]
+        # motif_contig_info = contigs_by_test_case[test_name]
 
         sampler._output_dir = inference_motif_scaffolding.construct_output_dir(sampler, test_name, output_dir_stem)
         print("output_dir: ",sampler._output_dir)

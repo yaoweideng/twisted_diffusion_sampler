@@ -3,17 +3,17 @@
 #SBATCH --output=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.out
 #SBATCH --error=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.err
 #SBATCH --time=08:00:00
-#SBATCH --partition=gpu,btrippe,roxanad,stat,owners
+#SBATCH --partition=owners,btrippe,stat,gpu,roxanad
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=GPU_MEM:80GB
-#SBATCH --array=25
+#SBATCH --array=1-30
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=yaowei@berkeley.edu
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
 
 source /home/groups/btrippe/yaowei/miniconda3/etc/profile.d/conda.sh
-conda activate tds_new
+conda activate se3_tds
 module load python/3.9 cuda/11.7
 module load system ruse
 
@@ -34,14 +34,14 @@ BASE_DIR=/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp
 ####### Hyperparameters #######
 WEIGHTS_PATH=${BASE_DIR}/weights/paper_weights.pth
 NUM_SAMPLES=100
-K=8
+K=4
 NUM_STEPS_GEOM=175
 NUM_STEPS_SEQ=25
 OMEGA_GEOM=1
 OMEGA_SEQ=0.1
 STRUCT_TWIST_SCALE=2
 TEST_CASES_CSV=${BASE_DIR}/motif_scaffolding/mb_test_cases.csv
-OUT_DIR=/scratch/users/yaowei/tds/experiments_new/outputs/run_${NUM_STEPS_GEOM}_${NUM_STEPS_SEQ}_${OMEGA_GEOM}_${OMEGA_SEQ}
+OUT_DIR=/scratch/users/yaowei/tds/exp_v3/outputs/run_K_${K}_${NUM_STEPS_GEOM}_${NUM_STEPS_SEQ}_${OMEGA_GEOM}_${OMEGA_SEQ}
 
 python seq_reweight_pf.py \
     inference.weights_path=$WEIGHTS_PATH \
