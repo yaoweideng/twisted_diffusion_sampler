@@ -109,23 +109,7 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     sampler.PF_cache = {}
     motif_segments = [torch.tensor(motif_segment, dtype=torch.float64) for motif_segment in motif_contig_info['motif_segments']]
     
-    # Calculate solvent-exposed offset for the motif
     motif_coords = torch.cat([motif_segment.to(sampler.device) for motif_segment in motif_segments], dim=0)
-    # Get CA atoms (index 1 in atom_positions)
-    ca_idx = residue_constants.atom_order['CA']
-    ca_pos = motif_coords[..., ca_idx, :]  # Get CA atoms
-    com = torch.mean(ca_pos, dim=0)
-    centered_pos = ca_pos - com
-    Rg = torch.sqrt(torch.mean(torch.sum(centered_pos**2, dim=-1)))
-    
-    # Generate random direction and apply offset
-    random_dir = torch.randn(3, device=sampler.device)
-    random_dir = random_dir / torch.norm(random_dir)
-    offset = random_dir * (0.5 * Rg)
-    
-    # Apply offset to motif coordinates
-    # Only apply offset to the translation components (last 3 dimensions)
-    motif_coords[..., -3:] = motif_coords[..., -3:] + offset
     rigids_motif = eu.remove_com_from_tensor_7(motif_coords)
     sampler.PF_cache["rigids_motif"] = rigids_motif
 
