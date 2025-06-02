@@ -113,9 +113,9 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     motif_coords = torch.cat([motif_segment.to(sampler.device) for motif_segment in motif_segments], dim=0)
     # Get CA atoms (index 1 in atom_positions)
     ca_idx = residue_constants.atom_order['CA']
-    ca_pos = motif_coords[:, ca_idx]  # Get CA atoms
+    ca_pos = motif_coords[..., ca_idx, :]  # Get CA atoms
     com = torch.mean(ca_pos, dim=0)
-    centered_pos = ca_pos - com[None, :]
+    centered_pos = ca_pos - com
     Rg = torch.sqrt(torch.mean(torch.sum(centered_pos**2, dim=-1)))
     
     # Generate random direction and apply offset
@@ -124,7 +124,7 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     offset = random_dir * (0.5 * Rg)
     
     # Apply offset to motif coordinates
-    motif_coords = motif_coords + offset[None, :]
+    motif_coords = motif_coords + offset
     rigids_motif = eu.remove_com_from_tensor_7(motif_coords)
     sampler.PF_cache["rigids_motif"] = rigids_motif
 
