@@ -15,6 +15,7 @@ from smc_utils_prot import feynman_kac_pf, smc_utils
 from motif_scaffolding import save_motif_segments, twisting
 from motif_scaffolding import utils as mu
 from data import all_atom
+from data import residue_constants
 from openfold.utils import rigid_utils as ru
 
 from experiments import inference_motif_scaffolding
@@ -110,7 +111,9 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     
     # Calculate solvent-exposed offset for the motif
     motif_coords = torch.cat([motif_segment.to(sampler.device) for motif_segment in motif_segments], dim=0)
-    ca_pos = motif_coords[:, 1, :]  # Get CA atoms
+    # Get CA atoms (index 1 in atom_positions)
+    ca_idx = residue_constants.atom_order['CA']
+    ca_pos = motif_coords[:, ca_idx]  # Get CA atoms
     com = torch.mean(ca_pos, dim=0)
     centered_pos = ca_pos - com[None, :]
     Rg = torch.sqrt(torch.mean(torch.sum(centered_pos**2, dim=-1)))
@@ -121,7 +124,7 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     offset = random_dir * (0.5 * Rg)
     
     # Apply offset to motif coordinates
-    motif_coords = motif_coords + offset[None, None, :]
+    motif_coords = motif_coords + offset[None, :]
     rigids_motif = eu.remove_com_from_tensor_7(motif_coords)
     sampler.PF_cache["rigids_motif"] = rigids_motif
 
