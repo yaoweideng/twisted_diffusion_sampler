@@ -124,7 +124,8 @@ def init_particle_filter(sampler, motif_contig_info, P=4):
     offset = random_dir * (0.5 * Rg)
     
     # Apply offset to motif coordinates
-    motif_coords = motif_coords + offset
+    # Only apply offset to the translation components (last 3 dimensions)
+    motif_coords[..., -3:] = motif_coords[..., -3:] + offset
     rigids_motif = eu.remove_com_from_tensor_7(motif_coords)
     sampler.PF_cache["rigids_motif"] = rigids_motif
 
