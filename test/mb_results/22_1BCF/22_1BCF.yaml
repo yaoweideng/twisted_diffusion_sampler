@@ -1,0 +1,38 @@
+inference:
+  name: motif-scaffolding
+  gpu_id: 0
+  seed: 2
+  backbone_pdb_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/scaffolds/22_1BCF
+  pmpnn_dir: ./tools/ProteinMPNN/
+  output_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/
+  motif_csv_path: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/scaffolds/22_1BCF/motif_info.csv
+  motif_pdb: /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/motif_pdbs/22_1BCF.pdb
+  benchmark_set: None
+  CA_only: false
+  hide_GPU_from_pmpnn: true
+  force_motif_AA_type: true
+  samples:
+    max_backbones: 100
+    seq_per_sample: 3
+    mpnn_batch_size: 3
+    sort_by_score: false
+  predict_method:
+  - ESMFold
+  af2:
+    executive_colabfold_path: path_to_your_localcolabfold
+    recycle: 3
+    seed: 33
+    model_type: alphafold2_ptm
+    num_models: 1
+    use_amber_relax: false
+    num_relax: 3
+    use_gpu_relax: false
+    rank: ptm
+    remove_raw_outputs: true
+evaluation:
+  assist_protein: ./tools/assistant_protein/assist_protein.pdb
+  foldseek_path: None
+  foldseek_database: /scratch/users/zhkim216/foldseek_pdb_database/pdb
+  foldseek_cores_for_pdbTM: 8
+  tmscore_threshold: 0.6
+  visualize: true

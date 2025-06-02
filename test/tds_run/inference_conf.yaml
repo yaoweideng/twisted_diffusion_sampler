@@ -89,7 +89,7 @@ inference:
   seed: 123
   pt_hub_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/.cache/torch
   pmpnn_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/ProteinMPNN
-  output_dir: /scratch/users/yaowei/tds/test
+  output_dir: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test
   weights_path: /scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/weights/paper_weights.pth
   aux_traj: false
   folding_method: esmf

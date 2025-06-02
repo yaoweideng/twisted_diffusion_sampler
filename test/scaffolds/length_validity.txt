@@ -1,0 +1,6 @@
+-------------Length Validity-------------
+
+Length check for /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/scaffolds:
+
+Detected 0 PDB files with invalid scaffold length.
+Scaffold lengths are all valid in /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/scaffolds!

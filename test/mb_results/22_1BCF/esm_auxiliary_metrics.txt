@@ -1,0 +1,15 @@
+----------Auxiliary Metrics----------
+
+The following are auxiliary metrics for /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF:
+
++----------------------------------------+---------+
+| Evaluated Protein                      | 22_1BCF |
++----------------------------------------+---------+
+| Closest Contender (Scaffold)           | \       |
++----------------------------------------+---------+
+| Closest Contender (Refolded Structure) | \       |
++----------------------------------------+---------+
+| Closest Motif-RMSD (Å)                 | \       |
++----------------------------------------+---------+
+| Scaffold RMSD of Closest Contender (Å) | \       |
++----------------------------------------+---------+

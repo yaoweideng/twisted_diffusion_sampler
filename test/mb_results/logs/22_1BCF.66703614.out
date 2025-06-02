@@ -1,0 +1,327 @@
+Running on motif: 22_1BCF
+Starting refolding for motif-scaffolding task......
+[2025-06-02 03:01:10,102][MotifRefolder][INFO] - Using device: cuda:0
+[2025-06-02 03:01:10,108][MotifRefolder][INFO] - Saving self-consistency config to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF.yaml
+[2025-06-02 03:01:12,446] [INFO] [real_accelerator.py:239:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/users/yaowei/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-06-02 03:01:13,726][root][INFO] - /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -fPIC -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -c /scratch/users/yaowei/66700420_foldseek/tmpubkisyzc/test.c -o /scratch/users/yaowei/66700420_foldseek/tmpubkisyzc/test.o
+[2025-06-02 03:01:14,224][root][INFO] - /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/x86_64-conda-linux-gnu-cc -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib -Wl,-rpath-link,/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib -L/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib /scratch/users/yaowei/66700420_foldseek/tmpubkisyzc/test.o -laio -o /scratch/users/yaowei/66700420_foldseek/tmpubkisyzc/a.out
+[2025-06-02 03:01:15,361][root][INFO] - /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/x86_64-conda-linux-gnu-cc -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -DNDEBUG -D_FORTIFY_SOURCE=2 -O2 -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -fPIC -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -isystem /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/include -c /scratch/users/yaowei/66700420_foldseek/tmpemd0mj8q/test.c -o /scratch/users/yaowei/66700420_foldseek/tmpemd0mj8q/test.o
+[2025-06-02 03:01:15,411][root][INFO] - /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/x86_64-conda-linux-gnu-cc -Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib -Wl,-rpath-link,/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib -L/home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/lib /scratch/users/yaowei/66700420_foldseek/tmpemd0mj8q/test.o -L/share/software/user/open/cuda/9.0.176 -L/share/software/user/open/cuda/9.0.176/lib64 -lcufile -o /scratch/users/yaowei/66700420_foldseek/tmpemd0mj8q/a.out
+[2025-06-02 03:02:06,532][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 14
+[2025-06-02 03:02:06,567][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 14
+copied 22_1BCF_14.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_14
+[2025-06-02 03:02:06,577][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:06,578][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:06,608][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:06,715][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:07,741][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_14/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_14/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 29 75 78 84 87 115
+Running ProteinMPNN...
+[2025-06-02 03:02:12,410][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:17,589][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:18,732][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:19,879][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_14/22_1BCF_14.pdb
+[2025-06-02 03:02:19,879][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 1
+[2025-06-02 03:02:19,890][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 1
+copied 22_1BCF_1.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_1
+[2025-06-02 03:02:19,900][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:19,900][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:19,929][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:20,022][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:20,853][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_1/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_1/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 12 27 30 91 94 103
+Running ProteinMPNN...
+[2025-06-02 03:02:25,124][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:26,275][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:27,413][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:28,549][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_1/22_1BCF_1.pdb
+[2025-06-02 03:02:28,549][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 8
+[2025-06-02 03:02:28,559][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 8
+copied 22_1BCF_8.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_8
+[2025-06-02 03:02:28,568][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:28,568][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:28,598][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:28,692][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:29,512][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_8/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_8/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 33 58 61 92 95 109
+Running ProteinMPNN...
+[2025-06-02 03:02:33,238][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:34,389][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:35,535][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:36,666][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_8/22_1BCF_8.pdb
+[2025-06-02 03:02:36,666][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 5
+[2025-06-02 03:02:36,679][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 5
+copied 22_1BCF_5.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_5
+[2025-06-02 03:02:36,690][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:36,690][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:36,723][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:36,814][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:37,706][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_5/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_5/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 6 89 92 108 111 112
+Running ProteinMPNN...
+[2025-06-02 03:02:41,778][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:42,921][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:44,057][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:45,199][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_5/22_1BCF_5.pdb
+[2025-06-02 03:02:45,200][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 12
+[2025-06-02 03:02:45,211][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 12
+copied 22_1BCF_12.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_12
+[2025-06-02 03:02:45,658][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:45,658][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:45,690][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:45,783][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:46,700][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_12/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_12/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 47 81 84 97 100 111
+Running ProteinMPNN...
+[2025-06-02 03:02:51,896][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:53,052][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:54,183][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:02:55,328][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_12/22_1BCF_12.pdb
+[2025-06-02 03:02:55,328][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 7
+[2025-06-02 03:02:55,348][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 7
+copied 22_1BCF_7.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_7
+[2025-06-02 03:02:55,358][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:55,358][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:02:55,390][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:02:55,491][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:02:56,786][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_7/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_7/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 31 67 70 80 83 93
+Running ProteinMPNN...
+[2025-06-02 03:03:00,679][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:01,825][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:02,957][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:04,094][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_7/22_1BCF_7.pdb
+[2025-06-02 03:03:04,094][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 2
+[2025-06-02 03:03:04,104][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 2
+copied 22_1BCF_2.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_2
+[2025-06-02 03:03:04,120][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:04,121][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:04,153][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:04,246][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:05,121][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_2/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_2/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 13 26 29 43 46 82
+Running ProteinMPNN...
+[2025-06-02 03:03:09,163][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:10,308][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:11,445][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:12,589][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_2/22_1BCF_2.pdb
+[2025-06-02 03:03:12,589][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 0
+[2025-06-02 03:03:12,600][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 0
+copied 22_1BCF_0.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_0
+[2025-06-02 03:03:12,611][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:12,611][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:12,643][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:12,736][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:13,819][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_0/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_0/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 22 71 74 82 85 117
+Running ProteinMPNN...
+[2025-06-02 03:03:17,928][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:19,074][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:20,209][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:21,345][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_0/22_1BCF_0.pdb
+[2025-06-02 03:03:21,346][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 16
+[2025-06-02 03:03:21,356][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 16
+copied 22_1BCF_16.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_16
+[2025-06-02 03:03:21,368][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:21,368][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:21,402][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:21,496][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:22,603][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_16/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_16/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 40 80 83 107 110 114
+Running ProteinMPNN...
+[2025-06-02 03:03:26,661][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:27,805][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:28,942][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:30,092][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_16/22_1BCF_16.pdb
+[2025-06-02 03:03:30,092][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 13
+[2025-06-02 03:03:30,102][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 13
+copied 22_1BCF_13.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_13
+[2025-06-02 03:03:30,113][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:30,113][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:30,146][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:30,243][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:31,104][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_13/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_13/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 27 46 49 106 109 118
+Running ProteinMPNN...
+[2025-06-02 03:03:35,004][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:36,156][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:37,291][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:38,434][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_13/22_1BCF_13.pdb
+[2025-06-02 03:03:38,434][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 6
+[2025-06-02 03:03:38,455][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 6
+copied 22_1BCF_6.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_6
+[2025-06-02 03:03:38,719][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:38,719][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:38,757][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:38,862][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:39,832][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_6/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_6/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 50 68 71 84 87 112
+Running ProteinMPNN...
+[2025-06-02 03:03:44,434][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:45,591][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:46,719][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:47,861][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_6/22_1BCF_6.pdb
+[2025-06-02 03:03:47,861][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 17
+[2025-06-02 03:03:47,872][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 17
+copied 22_1BCF_17.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_17
+[2025-06-02 03:03:47,886][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:47,886][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:47,920][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:48,021][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:49,204][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_17/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_17/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 15 71 74 87 90 108
+Running ProteinMPNN...
+[2025-06-02 03:03:53,159][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:54,297][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:55,430][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:03:56,570][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_17/22_1BCF_17.pdb
+[2025-06-02 03:03:56,570][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 19
+[2025-06-02 03:03:56,579][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 19
+copied 22_1BCF_19.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_19
+[2025-06-02 03:03:56,590][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:56,590][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:03:56,618][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:03:56,705][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:03:57,522][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_19/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_19/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 12 26 29 49 52 103
+Running ProteinMPNN...
+[2025-06-02 03:04:01,360][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:02,502][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:03,634][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:04,767][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_19/22_1BCF_19.pdb
+[2025-06-02 03:04:04,767][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 15
+[2025-06-02 03:04:04,777][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 15
+copied 22_1BCF_15.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_15
+[2025-06-02 03:04:04,788][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:04,788][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:04,818][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:04,906][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:05,709][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_15/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_15/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 31 72 75 90 93 114
+Running ProteinMPNN...
+[2025-06-02 03:04:10,381][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:11,527][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:12,661][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:13,795][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_15/22_1BCF_15.pdb
+[2025-06-02 03:04:13,795][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 11
+[2025-06-02 03:04:13,814][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 11
+copied 22_1BCF_11.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_11
+[2025-06-02 03:04:14,378][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:14,378][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:14,408][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:14,503][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:15,329][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_11/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_11/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 45 67 70 83 86 108
+Running ProteinMPNN...
+[2025-06-02 03:04:18,880][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:20,034][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:21,172][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:22,312][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_11/22_1BCF_11.pdb
+[2025-06-02 03:04:22,312][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 18
+[2025-06-02 03:04:22,321][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 18
+copied 22_1BCF_18.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_18
+[2025-06-02 03:04:22,331][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:22,331][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:22,364][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:22,452][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:23,397][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_18/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_18/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 7 21 24 86 89 114
+Running ProteinMPNN...
+[2025-06-02 03:04:27,317][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:28,471][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:29,608][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:30,756][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_18/22_1BCF_18.pdb
+[2025-06-02 03:04:30,756][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 10
+[2025-06-02 03:04:30,764][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 10
+copied 22_1BCF_10.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_10
+[2025-06-02 03:04:30,774][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:30,774][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:30,805][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:30,892][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:31,697][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_10/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_10/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 22 62 65 82 85 116
+Running ProteinMPNN...
+[2025-06-02 03:04:35,248][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:36,400][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:37,539][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:38,677][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_10/22_1BCF_10.pdb
+[2025-06-02 03:04:38,677][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 9
+[2025-06-02 03:04:38,687][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 9
+copied 22_1BCF_9.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_9
+[2025-06-02 03:04:38,697][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:38,697][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:38,727][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:38,813][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:42,505][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_9/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_9/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 34 71 74 83 86 114
+Running ProteinMPNN...
+[2025-06-02 03:04:46,341][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:47,487][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:48,623][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:49,756][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_9/22_1BCF_9.pdb
+[2025-06-02 03:04:49,756][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 3
+[2025-06-02 03:04:49,764][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 3
+copied 22_1BCF_3.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_3
+[2025-06-02 03:04:49,774][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:49,774][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:49,805][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:49,894][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:50,692][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_3/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_3/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 20 61 64 83 86 111
+Running ProteinMPNN...
+[2025-06-02 03:04:54,139][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:55,935][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:57,079][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:04:58,219][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_3/22_1BCF_3.pdb
+[2025-06-02 03:04:58,220][MotifRefolder][INFO] - case_num: 22, tested case: 22_1BCF, sample_num: 4
+[2025-06-02 03:04:58,229][MotifRefolder][INFO] - Running self-consistency on 22_1BCF, sample 4
+copied 22_1BCF_4.pdb to /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_4
+[2025-06-02 03:04:58,246][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:58,246][MotifRefolder][INFO] - Positions allowed to be redesigned: A2-8;B1-4;B6-7;C1-2;C4-8;D1-4;D6-7
+[2025-06-02 03:04:58,276][analysis.utils][INFO] - Residue types in designed backbone are consistent to standard motifs, continue.
+[2025-06-02 03:04:58,364][MotifRefolder][INFO] - The input protein has atom types: {'OD1', 'CG2', 'OXT', 'CD', 'NE', 'CG', 'SG', 'OH', 'CD1', 'ND1', 'OG', 'OD2', 'NH1', 'CE2', 'OG1', 'CB', 'CH2', 'CZ', 'CG1', 'CE3', 'SD', 'ND2', 'O', 'OE1', 'NH2', 'CZ3', 'CE', 'CZ2', 'N', 'OE2', 'NE2', 'CA', 'CE1', 'C', 'NZ', 'CD2', 'NE1'}
+            Recommend using full-backbone version of ProteinMPNN.
+[2025-06-02 03:04:59,190][MotifRefolder][INFO] - Running ProteinMPNN with command /home/groups/btrippe/yaowei/miniconda3/envs/motif_bench/bin/python /home/groups/btrippe/yaowei/esm_motifbench/MotifBench/Scaffold-Lab/./tools/ProteinMPNN//protein_mpnn_run.py --out_folder /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_4/self_consistency --jsonl_path /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_4/self_consistency/parsed_pdbs.jsonl --num_seq_per_target 3 --sampling_temp 0.1 --seed 33 --batch_size 3
+fix positions: 11 27 30 44 47 54
+Running ProteinMPNN...
+[2025-06-02 03:05:02,939][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:05:04,089][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:05:05,243][MotifRefolder][INFO] - Running ESMFold......
+[2025-06-02 03:05:06,382][MotifRefolder][INFO] - Done sample: /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/22_1BCF_4/22_1BCF_4.pdb
+[2025-06-02 03:05:06,384][MotifRefolder][INFO] - Motif information saved into /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/motif_info.json
+Refolding finished in 236.43s.
+[2025-06-02 03:05:06,386][MotifEvaluator][INFO] - You're using 8 for Foldseek-search.
+            You can set this value to `None` in configuration if you want to try maximizing your CPU utility
+            to speed up evaluation process.
+[2025-06-02 03:05:06,386][MotifEvaluator][INFO] - Processing results for folding method: ESMFold
+[2025-06-02 03:05:06,387][analysis.utils][INFO] - Merging evaluation results from /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/......
+[2025-06-02 03:05:09,042][analysis.utils][INFO] - Collected evaluation results from 20 protein backbones.
+[2025-06-02 03:05:09,059][MotifEvaluator][INFO] - There will not be closest contender since no designable scaffold detected.
+[2025-06-02 03:05:09,061][MotifEvaluator][INFO] - Diversity Calculation for esm finished.	Designable scaffolds: 0	Unique solutions: 0
+[2025-06-02 03:05:09,062][MotifEvaluator][INFO] - Diversity results for esm not found. Please check if Foldseek clustered properly or no designable backbones are present.
+[2025-06-02 03:05:09,062][MotifEvaluator][INFO] - No successful backbone was found for esm. Skipping novelty calculation.
+[2025-06-02 03:05:09,067][MotifEvaluator][INFO] - Performing visualization for ESMFold.
+[2025-06-02 03:05:11,620][analysis.plot][WARNING] - Input file /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/esm_success_novelty_results.csv does not exist. This will not affect the successful counts
+loading native motif resi 1-8 and chain C or resi 1-8 and chain D or resi 1-8 and chain B or resi 1-8 and chain A
+[2025-06-02 03:05:11,714][analysis.plot][INFO] - No successful backbones detected in /scratch/users/yaowei/tds/twisted_diffusion_sampler/test/mb_results/22_1BCF/esm_unique_designable_backbones, Only motif structure will be saved.
+Evaluation finished in 5.33s. Voila!
