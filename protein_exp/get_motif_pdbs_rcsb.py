@@ -35,6 +35,10 @@ def main():
     test_cases_df = pd.read_csv("test_cases.csv")
     mb_test_cases_df = pd.read_csv("motif_scaffolding/mb_test_cases.csv")
     
+    # Get absolute path for mb_rcsb_pdb directory
+    current_dir = os.path.abspath(os.path.dirname(__file__))
+    mb_rcsb_pdb_dir = os.path.join(current_dir, "mb_rcsb_pdb")
+    
     # Create new dataframe with specified columns
     new_df = pd.DataFrame({
         'pdb_id': test_cases_df['pdb_id'],
@@ -43,7 +47,7 @@ def main():
         'length_fixed': mb_test_cases_df['length_fixed'],
         'length': mb_test_cases_df['length'],
         'target': mb_test_cases_df['target'],
-        'motif_path': mb_test_cases_df['motif_path']
+        'motif_path': [os.path.join(mb_rcsb_pdb_dir, f"{pdb_id.lower()}.pdb") for pdb_id in test_cases_df['pdb_id']]
     })
     
     # Save to new CSV file
