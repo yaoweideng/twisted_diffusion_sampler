@@ -18,7 +18,7 @@ module load python/3.9 cuda/11.7
 module load system ruse
 
 # absolute path to motif_pdbs directory:
-PDB_DIR=/home/groups/btrippe/yaowei/esm_motifbench/MotifBench/motif_pdbs
+PDB_DIR=/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/mb_rcsb_pdb
 
 # build a sorted bash array of all .pdb stems:
 mapfile -t PDB_LIST < <(ls $PDB_DIR/*.pdb | sort | xargs -n1 basename -s .pdb)
@@ -37,8 +37,8 @@ NUM_SAMPLES=100
 K=4
 NUM_STEPS_GEOM=200
 STRUCT_TWIST_SCALE=2
-TEST_CASES_CSV=${BASE_DIR}/motif_scaffolding/mb_test_cases.csv
-OUT_DIR=/scratch/users/yaowei/tds/exp_v3/outputs/run_vanilla_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
+TEST_CASES_CSV=${BASE_DIR}/motif_scaffolding/rcsb_test_cases.csv
+OUT_DIR=/scratch/users/yaowei/tds/exp_v4/outputs/run_vanilla_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
 
 python experiments/inference_particle_filter.py \
     inference.weights_path=$WEIGHTS_PATH \
