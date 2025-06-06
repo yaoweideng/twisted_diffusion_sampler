@@ -42,7 +42,7 @@ def main():
     # Create new dataframe with specified columns
     new_df = pd.DataFrame({
         'pdb_id': test_cases_df['pdb_id'],
-        'motif_residues': test_cases_df['motif_residues'].str.replace(';', ','),
+        'contig': test_cases_df['motif_residues'].str.replace(';', ','),
         'idcs_to_redesign': test_cases_df['redesign_idcs'],
         'length_fixed': mb_test_cases_df['length_fixed'],
         'length': mb_test_cases_df['length'],

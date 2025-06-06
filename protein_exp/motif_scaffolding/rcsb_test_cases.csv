@@ -1,4 +1,4 @@
-pdb_id,motif_residues,idcs_to_redesign,length_fixed,length,target,motif_path
+pdb_id,contig,idcs_to_redesign,length_fixed,length,target,motif_path
 1LDB,A186-206,,125,125,01_1LDB,/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/mb_rcsb_pdb/1ldb.pdb
 1ITU,A124-147,,150,150,02_1ITU,/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/mb_rcsb_pdb/1itu.pdb
 2CGA,A184-194,,125,125,03_2CGA,/scratch/users/yaowei/tds/twisted_diffusion_sampler/protein_exp/mb_rcsb_pdb/2cga.pdb
