@@ -31,27 +31,24 @@ def download_pdb(pdb_id: str, output_dir: str) -> bool:
         return False
 
 def main():
-    # Create output directory
-    output_dir = "mb_rcsb_pdb"
-    os.makedirs(output_dir, exist_ok=True)
+    # Read both CSV files
+    test_cases_df = pd.read_csv("test_cases.csv")
+    mb_test_cases_df = pd.read_csv("motif_scaffolding/mb_test_cases.csv")
     
-    # Read test cases CSV
-    csv_path = "test_cases.csv"
-    df = pd.read_csv(csv_path)
+    # Create new dataframe with specified columns
+    new_df = pd.DataFrame({
+        'pdb_id': test_cases_df['pdb_id'],
+        'motif_residues': test_cases_df['motif_residues'].str.replace(';', ','),
+        'idcs_to_redesign': test_cases_df['redesign_idcs'],
+        'length_fixed': mb_test_cases_df['length_fixed'],
+        'length': mb_test_cases_df['length'],
+        'target': mb_test_cases_df['target'],
+        'motif_path': mb_test_cases_df['motif_path']
+    })
     
-    # Get unique PDB IDs
-    unique_pdbs = df['pdb_id'].unique()
-    
-    # Download each PDB
-    successful_downloads = 0
-    for pdb_id in unique_pdbs:
-        if download_pdb(pdb_id, output_dir):
-            successful_downloads += 1
-    
-    print(f"\nDownload summary:")
-    print(f"Total PDBs attempted: {len(unique_pdbs)}")
-    print(f"Successfully downloaded: {successful_downloads}")
-    print(f"Failed downloads: {len(unique_pdbs) - successful_downloads}")
+    # Save to new CSV file
+    new_df.to_csv("rcsb_test_cases.csv", index=False)
+    print("Created rcsb_test_cases.csv successfully")
 
 if __name__ == "__main__":
     main()
