@@ -1,19 +1,19 @@
 #!/bin/bash
-#SBATCH --job-name=tds_vanilla
-#SBATCH --output=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.out
-#SBATCH --error=/scratch/users/yaowei/tds/experiments_new/outputs/logs/tds_aug%A_%a.err
+#SBATCH --job-name=tds_var_est
+#SBATCH --output=/scratch/users/yaowei/tds/exp_var_est/outputs/logs/tds%A_%a.out
+#SBATCH --error=/scratch/users/yaowei/tds/exp_var_est/outputs/logs/tds%A_%a.err
 #SBATCH --time=08:00:00
 #SBATCH --partition=stat,gpu,btrippe,owners,roxanad
 #SBATCH --gres=gpu:1
 #SBATCH --constraint=GPU_MEM:80GB
-#SBATCH --array=1-30
+#SBATCH --array=1-10
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=yaowei@berkeley.edu
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
 
 source /home/groups/btrippe/yaowei/miniconda3/etc/profile.d/conda.sh
-conda activate tds_new
+conda activate se3_tds
 module load python/3.9 cuda/11.7
 module load system ruse
 
@@ -38,7 +38,7 @@ K=4
 NUM_STEPS_GEOM=200
 STRUCT_TWIST_SCALE=2
 TEST_CASES_CSV=${BASE_DIR}/motif_scaffolding/mb_test_cases.csv
-OUT_DIR=/scratch/users/yaowei/tds/exp_v3/outputs/run_vanilla_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
+OUT_DIR=/scratch/users/yaowei/tds/exp_var_est/outputs/run_base_${NUM_STEPS_GEOM}_${STRUCT_TWIST_SCALE}_${K}
 
 python experiments/inference_particle_filter.py \
     inference.weights_path=$WEIGHTS_PATH \
