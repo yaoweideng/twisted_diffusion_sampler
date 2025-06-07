@@ -287,6 +287,14 @@ def log_lik_approx(R_pred, x_pred, rigids_obs, se3_diffuser, t,
         x_pred = se3_diffuser._r3_diffuser._scale(x_pred)
         x_obs = se3_diffuser._r3_diffuser._scale(x_obs)
 
-        log_p += -(((x_obs - x_pred)**2)/(2*(1-bar_a_t[:, None, None, None]))).sum(dim=[-1, -2])
+        # log_p += -(((x_obs - x_pred)**2)/(2*(1-bar_a_t[:, None, None, None]))).sum(dim=[-1, -2])
+        # stable likelihood variance estimate
+        #augment the variance by sigma^2/mu^2 from Eq.15 of 2306.10574
+        sigma_r3 = torch.tensor(se3_diffuser._r3_diffuser.sigma(t.cpu().numpy()), dtype=x_pred.dtype, device=x_pred.device)
+        mu_r3 = bar_a_t
+        var_base = 2*(1 - mu_r3)
+        var_extra = (sigma_r3**2) / (mu_r3**2)
+        var_eff = (var_base + var_extra)[:, None, None, None]
+        log_p += -(((x_obs - x_pred)**2) / var_eff).sum(dim=[-1, -2])
 
     return log_p
